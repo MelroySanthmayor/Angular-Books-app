@@ -11,6 +11,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HttpHelperService } from './services/http-helper.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [HttpHelperService],
+  providers: [HttpHelperService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
