@@ -1,9 +1,9 @@
 <nav style="height: 100px" [ngClass]="{'greenYellowbackground':toggle === false}">
+  <div style="text-align:center" class="title">
+    <h1 style="color:white">Book Keeper</h1></div>
   <ul class="list-inline float-right nav-items">
-    <li class="list-inline-item" (click)="Headerclick()">Login</li>
-    <li class="list-inline-item" (click)="Headerclick()">Signup</li>
+    <li class="list-inline-item"   (click)="Headerclick()"><h3 style="color:white"><a routerLink="/login" role="button">Login</a></h3></li>
+    <li class="list-inline-item" (click)="Headerclick()"><h3 style="color:white">Signup</h3></li>
   </ul>
-
-
 
 </nav>
