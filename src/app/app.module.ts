@@ -12,6 +12,7 @@ import { HttpHelperService } from './services/http-helper.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { BooksComponent } from './books/books.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AuthService } from './services/auth.service';
     HeaderComponent,
     LoginComponent,
     SignupComponent,
-    HomepageComponent
+    HomepageComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,

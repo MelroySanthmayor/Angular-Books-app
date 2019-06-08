@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 import { Http } from '@angular/http';
 import { HttpHelperService } from '../services/http-helper.service';
 @Injectable()
@@ -25,4 +23,28 @@ export class AuthService {
     });
     
   }
+  getUserdetails(token) : Promise<any>
+  {
+    return this.httpHelperService.http.get(this.httpHelperService.apiUrl +'books/list',{headers: this.httpHelperService.headers(token)})
+    .toPromise()
+    .then(res => 
+      { return res.json();})
+      .catch( error =>
+        {
+
+        });
+  }
+
+  getFilteredBooks(param,token) : Promise<any>
+  {
+    return this.httpHelperService.http.get(this.httpHelperService.apiUrl +'books/filter?text='+param,{headers: this.httpHelperService.headers(token)})
+    .toPromise()
+    .then(res => 
+      { return res.json();})
+      .catch( error =>
+        {
+
+        });
+  }
+
 }
