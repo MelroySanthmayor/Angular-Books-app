@@ -8,7 +8,9 @@ nav {
     left:0;
   }
 .greenYellowbackground{
-    background-color: greenyellow;
+    background-image: url('../../assets/img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 .nav-items {
     padding-right: 20px;

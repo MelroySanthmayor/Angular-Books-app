@@ -2,6 +2,9 @@
   <div style="margin-top: 120px;padding-bottom:40px;">
     <h1 style="text-align: center;">{{userName}}'s Book Keep</h1>
   </div>
+  <div *ngIf="userBooks.length === 0" style="margin-top: 50px;padding-bottom:40px;">
+    <h2 style="text-align: center;">Add some books to your Keep!</h2>
+  </div>
   
       
         <input (keyup)="onKeyUp($event)" style='margin-bottom: 20px;margin-left: 10px;width: 250px;display: inline-block;'type="text" class="form-control" id="text" placeholder="Search book by name" name="text" ngModel>

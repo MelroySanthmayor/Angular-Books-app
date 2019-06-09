@@ -75,4 +75,21 @@ export class AuthService {
     this.LoggedIn = val;
   }
 
+  Register( userdata) : Promise<any>
+  {
+    
+    return this.httpHelperService.http
+    .post(this.httpHelperService.apiUrl +'api/auth/register', JSON.stringify(userdata), {headers: this.httpHelperService.headers(null)})
+    .toPromise()
+    .then(res=>
+    { return res.json();
+      ;
+    })
+    .catch(error=>
+    {
+      
+    });
+    
+  }
+
 }
