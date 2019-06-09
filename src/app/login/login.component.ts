@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+@Injectable()
 export class LoginComponent implements OnInit {
   //loginEmail : string = "mike@gmail.com"
   userdata : any
@@ -25,6 +27,8 @@ export class LoginComponent implements OnInit {
       this.success = true
       if(res && res.auth && res.token) {
         localStorage.setItem('CurrentUser',res.token);
+        this.authService.setLoggedIN(true);
+        this.authService.emitChange(true);
         this.router.navigate(['/books-page']);
       }
       //add loader later

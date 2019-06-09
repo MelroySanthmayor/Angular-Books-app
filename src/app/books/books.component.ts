@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -14,19 +15,23 @@ export class BooksComponent implements OnInit {
   querytext: string
   BookData : any
 
-  constructor(public authService : AuthService) { }
+  constructor(public authService : AuthService, private router : Router) { }
 
   ngOnInit() {
     this.getUserData()
   }
 
   getUserData(){
+    this.authService.setLoggedIN(true);
     this.token = localStorage.getItem('CurrentUser');
     this.authService.getUserdetails(this.token).then(res => {
       this.success = true
       if(res && res.user_name && res.user_books) {
         this.userName = res.user_name;
         this.userBooks = res.user_books;
+      }
+      if(res && res.auth === false){
+        this.router.navigate(['/login']);
       }
       //add loader later
     }).catch(() => {
@@ -43,6 +48,9 @@ export class BooksComponent implements OnInit {
       this.success = true
       if(res && res.user_books) {
         this.userBooks = res.user_books;
+      }
+      if(res && res.auth === false){
+        this.router.navigate(['/login']);
       }
       //add loader later
     }).catch(() => {
@@ -63,6 +71,9 @@ export class BooksComponent implements OnInit {
       if(res){
         this.userBooks = res;
       }
+      if(res && res.auth === false){
+        this.router.navigate(['/login']);
+      }
     }).catch(() => {
       this.success = false;
       
@@ -73,3 +84,9 @@ export class BooksComponent implements OnInit {
   
 
 }
+
+
+// {
+//   "auth": false,
+//   "message": "Failed to authenticate token."
+// }

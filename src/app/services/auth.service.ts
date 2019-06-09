@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { HttpHelperService } from '../services/http-helper.service';
+import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class AuthService {
-  
+  LoggedIn : boolean
+  private emitChangeSource = new Subject<any>();
+  changeEmitted$ = this.emitChangeSource.asObservable();
   constructor(private http: Http, public httpHelperService: HttpHelperService ) {
     
+  }
+  emitChange(LoggedIn) {
+    this.emitChangeSource.next(LoggedIn);
   }
   Login( userdata) : Promise<any>
   {
@@ -61,6 +67,12 @@ export class AuthService {
     });
      
     
+  }
+  getLoggedIN(){
+    return this.LoggedIn
+  }
+  setLoggedIN(val){
+    this.LoggedIn = val;
   }
 
 }

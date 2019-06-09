@@ -22,3 +22,14 @@ nav {
     position: absolute;
 
 }
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:white; 
+     text-decoration:none; 
+     cursor:pointer;  
+}

@@ -3,9 +3,9 @@
     <h1 style="color:white">Book Keeper</h1></div>
     
   <ul [ngClass]="{'list-inline' : LoggedIn === false,'float-right':LoggedIn === false,'nav-items':LoggedIn === false, 'logout': LoggedIn === true}">
-    <li class="list-inline-item" *ngIf="LoggedIn === false"  (click)="Headerclick()"><h3 style="color:white"><a routerLink="/login" role="button">Login</a></h3></li>
-    <li class="list-inline-item" *ngIf="LoggedIn === false" (click)="Headerclick()"><h3 style="color:white">Signup</h3></li>
-    <li class="list-inline-item" *ngIf="LoggedIn === true" (click)="Headerclick()"><h3 style="color:white;position: absolute;">Logout</h3></li>
+    <li class="list-inline-item" *ngIf="LoggedIn === false"><h3 style="color:white"><a class="nav-link" routerLink="/login" role="button">Login</a></h3></li>
+    <li class="list-inline-item" *ngIf="LoggedIn === false"><h3 style="color:white">Signup</h3></li>
+    <li class="list-inline-item" *ngIf="LoggedIn === true" (click)="Logout()"><h3 style="color:white;position: absolute;"><a class="nav-link" routerLink="/" role="button">Logout</a></h3></li>
   </ul>
 
 </nav>
