@@ -12,6 +12,7 @@ export class BooksComponent implements OnInit {
   userName : string
   userBooks : any
   querytext: string
+  BookData : any
 
   constructor(public authService : AuthService) { }
 
@@ -36,7 +37,7 @@ export class BooksComponent implements OnInit {
   }
 
   onKeyUp(event : any){
-    this.token = localStorage.getItem('CurrentUser'); // make a fucntion to gettoken in auth service todo
+    //this.token = localStorage.getItem('CurrentUser'); // make a fucntion to gettoken in auth service todo
     this.querytext = event.target.value;
     this.authService.getFilteredBooks(this.querytext,this.token).then(res => {
       this.success = true
@@ -49,6 +50,24 @@ export class BooksComponent implements OnInit {
       
     })
 
+  }
+
+  onSubmit(data){
+    this.BookData = {
+      title : data.title,
+      author : data.author
+    }
+
+    this.authService.createBook(this.BookData,this.token).then(res => {
+      this.success = true
+      if(res){
+        this.userBooks = res;
+      }
+    }).catch(() => {
+      this.success = false;
+      
+    })
+    
   }
 
   

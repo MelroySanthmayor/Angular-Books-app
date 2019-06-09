@@ -46,5 +46,21 @@ export class AuthService {
 
         });
   }
+  createBook(param, token) : Promise<any>
+  {
+    return this.httpHelperService.http
+    .post(this.httpHelperService.apiUrl +'books/create',JSON.stringify(param), {headers: this.httpHelperService.headers(token)})
+    .toPromise()
+    .then(res=>
+    { return res.json();
+      ;
+    })
+    .catch(error=>
+    {
+      
+    });
+     
+    
+  }
 
 }
